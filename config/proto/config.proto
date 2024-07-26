@@ -319,6 +319,11 @@ message ClientConfig {
     uint64 logfile_size = 48;
 
     string panic_file = 49;
+
+    // When set the VQL responses will be logged at DEBUG level.
+    // **WARNING** this is only useful for debugging. The responses are not
+    // encrypted and can be very large.
+    bool log_response = 50;
 }
 
 message APIConfig {

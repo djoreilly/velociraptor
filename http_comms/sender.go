@@ -121,6 +121,9 @@ func (self *Sender) PumpExecutorToRingBuffer(ctx context.Context) {
 				self.urgent_buffer.Enqueue(serialized_msg)
 
 			} else {
+				if msg.VQLResponse != nil && self.config_obj.Client.LogResponse {
+					self.logger.Debug("VQL Response: %s", msg.VQLResponse.JSONLResponse)
+				}
 				// NOTE: This is kind of a hack. We hold in
 				// memory a bunch of VeloMessage proto objects
 				// and we want to serialize them into a
